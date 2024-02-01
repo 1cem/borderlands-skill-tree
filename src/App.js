@@ -1,35 +1,9 @@
 import React from "react";
 import { SkillProvider, SkillTreeGroup, SkillTree } from 'beautiful-skill-tree';
+import { motion, harmony, cataclysm } from "./data/data";
+import theme from './data/theme';
 import logo from "./logo.png";
 import "./App.css";
-
-// Skill tree data
-const data = [{
-  id: 'first-skill',
-  title: 'The root node',
-  tooltip: {
-    description: "The parent node, all of the descendants will be locked until it's selected",
-  },
-  children: [
-    {
-      id: 'second-skill',
-      title: 'Second Skill',
-      tooltip: {
-        description: 'This is the second skill.',
-      },
-      children: [
-        {
-          id: 'third-skill',
-          title: 'Third Skill',
-          tooltip: {
-            description: 'This is the third skill.',
-          },
-          children: []
-        }
-      ]
-    }
-  ]
-}];
 
 function App() {
   return (
@@ -43,10 +17,12 @@ function App() {
       </div>
 
       <SkillProvider>
-        <SkillTreeGroup>
-          {() => (
-            <SkillTree treeId="basic-birch" title="First Skill Tree" data={data} />
-          )}
+        <SkillTreeGroup theme={theme}>
+          <React.Fragment>
+            <SkillTree treeId="motion" title="Motion" data={motion} />
+            <SkillTree treeId="harmony" title="Harmony" data={harmony} />
+            <SkillTree treeId="cataclysm" title="Cataclysm" data={cataclysm} />
+          </React.Fragment>
         </SkillTreeGroup>
       </SkillProvider>
     </div>
